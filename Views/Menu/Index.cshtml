@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FPTBook.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Account Manager</h1>
+
+<p>
+    <a asp-action="Add">Add Account</a> |
+    <a asp-action="CheckReq">Check Request</a>
+</p>
+
+<form asp-controller="Account" asp-action="Index">
+    <p>
+        Name: <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<table class="table table-bordered">
+    <thead> 
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Role)</th>
+            <th>@Html.DisplayNameFor(model => model.Username)</th>
+            <th>@Html.DisplayNameFor(model => model.Password)</th>
+            <th>@Html.DisplayNameFor(model => model.ProfilePicture)</th>
+            <th>Action Manager</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                        <img src="~/images/@item.ProfilePicture" class="rounded-circle" height="40" width="40"
+                     asp-append-version="true" />
+                    </td>
+                <th>@Html.DisplayFor(modelItem => item.Name)</th>
+                <th>@Html.DisplayFor(modelItem => item.Role)</th>
+                <th>@Html.DisplayFor(modelItem => item.Username)</th>
+                <th>@Html.DisplayFor(modelItem => item.Password)</th>
+                    <td>
+                        <a asp-action="Update" asp-route-id="@item.Id"> Update </a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                    </td> 
+                </tr>
+        }
+    </tbody>
+</table>

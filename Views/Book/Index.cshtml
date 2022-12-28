@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FPTBook.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Owner Page</h1>
+<p>
+    <a asp-action="Create">Add New Book</a> |
+    <a href="https://localhost:7206/CategoryReq/Create">Add New Category</a>
+</p>
+<form asp-controller="Book" asp-action="Index">
+    <p>
+        Name of the Book: <input type="text" name="SearchString" />
+        <input type="submit" value="Search"/>
+    </p>
+</form>
+<table class="table table-bordered">
+    <thead> 
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Picture)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Category)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.Author)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@item.Picture" class="rounded-circle" height="69" width="69"
+                     asp-append-version="true" />
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.Author)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"> Details </a> |
+                    <a asp-action="Update" asp-route-id="@item.Id"> Update </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                </td> 
+            </tr>
+        }
+    </tbody>
+</table>

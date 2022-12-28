@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FPTBook.Models.CategoryReq>
+@{
+    ViewData["Title"] = "Check Request";
+}
+
+<h1>Check out Category Request</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Req)</th>
+            <th>Acction</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var newitem in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => newitem.Name)</td>
+                <td>@Html.DisplayFor(modelItem => newitem.Req)</td>
+                <td>
+                    <a asp-action="Accept" asp-route-id="@newitem.Id">Accept</a> |
+                    <a asp-action="Decline" asp-route-id="@newitem.Id"> Decline </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

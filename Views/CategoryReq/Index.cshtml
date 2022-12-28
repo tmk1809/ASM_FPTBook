@@ -1,0 +1,28 @@
+﻿@model IEnumerable<FPTBook.Models.CategoryReq>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Category Request Page</h1>
+<p>
+    <a asp-action="Create">Add New Category</a> |
+    <a href="https://localhost:7206/Book">back to Owner Page</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Req)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var newitem in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => newitem.Name)</td>
+                <td>@Html.DisplayFor(modelItem => newitem.Req)</td>
+            </tr>
+        }
+    </tbody>
+</table>

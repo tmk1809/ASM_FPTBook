@@ -1,0 +1,22 @@
+﻿@model FPTBook.Models.CategoryReq
+
+@{
+    ViewData["Title"] = "Decline Request";
+}
+
+<h1>Decline Confirmation</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Name)</dd>
+        <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Req)</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Req)</dd>
+    </dl>
+
+    <form asp-action="Decline">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Decline" class="btn btn-danger" />
+    </form>
+</div>
